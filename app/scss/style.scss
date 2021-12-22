@@ -1,0 +1,1124 @@
+@import 'reset';
+@import 'vars';
+@import 'functions';
+@import 'mixins';
+@import 'fonts';
+@import 'libs';
+@import 'keyframes';
+@import 'global';
+
+.header,
+.specialities__bg,
+.locations {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.6);
+  }
+}
+
+.header {
+  height: 100vh;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 38px 0;
+
+    @include width-1500 {
+      padding: 20px 0;
+    }
+
+    @include width-1100 {
+      align-items: center;
+    }
+
+    &--active {
+      .header__menu {
+        transform: translateY(0);
+      }
+
+      .header__burger {
+        div {
+          width: 50%;
+          transform-origin: 100% 50%;
+
+          &:nth-of-type(1) {
+            transform: translateY(5px) rotate(315deg);
+          }
+
+          &:nth-of-type(2) {
+            transform: translateY(2px) rotate(225deg);
+          }
+
+          &:nth-of-type(3) {
+            transform: translateY(-1px) rotate(135deg);
+          }
+
+          &:nth-of-type(4) {
+            transform: translateY(-4px) rotate(45deg);
+          }
+
+          &:not(:last-child) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__logo {
+    position: relative;
+
+    @include width-1100 {
+      width: 165px;
+      height: 75px;
+    }
+
+    @include width-568 {
+      width: 110px;
+      height: 50px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include width-1100 {
+      display: flex;
+      flex-wrap: wrap;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 45;
+      height: 100vh;
+      background-color: rgba($black, 0.8);
+      transform: translateY(-200%);
+      overflow: auto;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &__elem {
+    position: relative;
+
+    @include width-1100 {
+      text-align: center;
+      width: 100%;
+    }
+
+    &:not(:first-child) {
+      padding-left: 34px;
+
+      @include width-1500 {
+        padding-left: 15px;
+      }
+
+      @include width-1100 {
+        padding-left: 0;
+      }
+    }
+
+    &:not(:last-child) {
+      padding-right: 36px;
+
+      @include width-1500 {
+        padding-right: 15px;
+      }
+
+      @include width-1100 {
+        padding-right: 0;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: $white;
+
+        @include width-1500 {
+          display: none
+        }
+      }
+    }
+  }
+
+  &__link {
+    @extend %montserrat-600;
+    font-size: 24px;
+    color: $white;
+    text-transform: uppercase;
+
+    @include width-1100 {
+      width: 80%;
+      padding: 25px 15px;
+    }
+  }
+
+  &__burger {
+    display: none;
+    max-width: 44px;
+    width: 100%;
+    height: 44px;
+    z-index: 50;
+
+    @include width-1100 {
+      display: block;
+
+    }
+
+    div {
+      height: 3px;
+      width: 100%;
+      background-color: $white;
+      transition: transform 0.5s ease, width 0.3s ease;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+
+    @include width-1500 {
+      // bottom: 40%;
+    }
+  }
+
+  &__title {
+    font-size: 93px;
+    font-weight: 600;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 19px;
+    text-align: center;
+
+    @include width-1500 {
+      font-size: 50px;
+      letter-spacing: 10px;
+    }
+
+    @include width-1100 {
+      font-size: 35px;
+    }
+
+    @include width-823 {
+      font-size: 26px;
+      letter-spacing: 5px;
+    }
+
+    @include width-568 {
+      font-size: 19px;
+    }
+  }
+
+  &__sup {
+    display: block;
+    padding-top: 15px;
+    margin-bottom: 35px;
+    @extend %athena;
+    font-size: 449px;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+
+    @include width-1500 {
+      padding-top: 70px;
+      font-size: 300px;
+    }
+
+    @include width-1100 {
+      font-size: 250px;
+    }
+
+    @include width-823 {
+      padding-top: 0;
+      margin: -13% 0 0;
+      font-size: 200px;
+    }
+  }
+
+}
+
+//about
+.about {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  margin: -60px 0 -50px;
+
+  @include width-823 {
+    margin: -20px 0;
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    box-shadow: 0px 6px 11px 1px rgba($black, 0.1);
+    overflow: hidden;
+
+    @include width-1650 {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  }
+
+  &__box {
+    height: 400px;
+    text-align: center;
+    background-color: $white;
+
+    @include width-568 {
+      height: 300px;
+    }
+
+    &:nth-of-type(2n+1) {
+      flex: 1 1 580px;
+    }
+
+    &:nth-of-type(2n+2) {
+      flex: 1 1 1020px;
+    }
+
+    &:nth-of-type(3) {
+      @include width-1650 {
+        order: 1;
+      }
+    }
+
+    &--text {
+      padding: 15px 70px;
+      min-height: 400px;
+      height: 100%;
+
+      @include width-823 {
+        padding: 10px 15px 20px;
+      }
+
+      @include width-568 {
+        min-height: 300px;
+        font-size: 16px;
+      }
+    }
+
+    p {
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+    line-height: 0.7;
+    color: $red;
+
+    @include width-823 {
+      font-size: 120px;
+    }
+
+    @include width-568 {
+      font-size: 100px;
+    }
+  }
+
+  // &__link {}
+}
+
+//specialities
+.specialities {
+  &__bg {
+    min-height: 895px;
+
+    @include width-1100 {
+      min-height: 700px;
+    }
+
+    @include width-823 {
+      min-height: 600px;
+    }
+
+    @include width-568 {
+      min-height: 400px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    max-width: 670px;
+    padding: 155px 0;
+    margin: 0 auto;
+    font-size: 297px;
+    line-height: 0.6;
+    color: $white;
+    text-align: center;
+
+    @include width-1100 {
+      padding: 130px 0;
+      font-size: 250px;
+    }
+
+    @include width-823 {
+      font-size: 210px;
+    }
+
+    @include width-568 {
+      padding: 85px 0;
+      font-size: 135px;
+    }
+  }
+
+  &__box {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    min-height: 690px;
+    margin: -69px 0 -64px;
+
+    @include width-823 {
+      margin: -20px 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    box-shadow: 0px 6px 11px 1px rgba($black, 0.1);
+    overflow: hidden;
+
+    @include width-1650 {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  }
+
+  &__item {
+    flex: 1 1 50%;
+    display: flex;
+    background-color: $white;
+
+    &:nth-of-type(1n+3) {
+      flex-direction: row-reverse;
+    }
+
+    @include width-1650 {
+      flex: 1 1 100%;
+
+      &:nth-of-type(1n+3) {
+        flex-direction: initial;
+      }
+
+      &:nth-of-type(2n+1) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    @include width-823 {
+      &:nth-of-type(1n+1) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
+  &__text,
+  &__wrap {
+    flex: 0 1 50%;
+  }
+
+  &__text {
+    padding: 90px 20px 20px;
+    text-align: center;
+
+    @include width-1650 {
+      padding-top: 50px;
+    }
+
+    @include width-823 {
+      padding-bottom: 50px;
+    }
+
+    @include width-568 {
+      padding: 25px 10px 35px;
+    }
+
+    p {
+      margin-bottom: 31px;
+      font-size: 24px;
+      line-height: 1.5;
+      color: $tundora;
+      letter-spacing: 1.2px;
+
+      @include width-1650 {
+        font-size: 21px;
+        letter-spacing: 1px;
+      }
+
+      @include width-568 {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__heading {
+    margin-bottom: 25px;
+    @extend %montserrat-700;
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: $black;
+    text-transform: uppercase;
+
+    @include width-568 {
+      font-size: 24px;
+    }
+  }
+
+  &__price {
+    font-size: 24px;
+    color: $red;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    span {
+      @extend %rupee;
+      font-size: 24px;
+    }
+  }
+
+  &__img {
+    width: 412px;
+    height: 412px;
+    object-fit: cover;
+
+    @include width-1650 {
+      width: 100%;
+    }
+
+    @include width-568 {
+      height: 350px;
+    }
+
+    @include width-415 {
+      height: 260px;
+    }
+  }
+}
+
+//Menu
+.menu {
+  &__bg {
+    min-height: 1080px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @include width-1650 {
+      min-height: 800px;
+    }
+
+    @include width-1500 {
+      min-height: 650px;
+    }
+
+    @include width-1100 {
+      min-height: 550px;
+    }
+
+    @include width-823 {
+      min-height: 430px;
+    }
+
+    @include width-568 {
+      min-height: 350px;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: 20;
+    min-height: 1710px;
+    background-color: $white;
+    background-image: url('../images/menu-bg-food/menu-bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @include width-1650 {
+      min-height: 1450px;
+      padding-bottom: 250px;
+    }
+
+    @include width-1100 {
+      padding-bottom: 100px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      min-height: calc(100% + 150px);
+      margin-top: -150px;
+      background-image: url('../images/menu-bg-food/top-left.png'), url('../images/menu-bg-food/top-right.png'), url('../images/menu-bg-food/middle-left.png'), url('../images/menu-bg-food/middle-right.png'), url('../images/menu-bg-food/bottom-left.png'), url('../images/menu-bg-food/bottom-center.png'), url('../images/menu-bg-food/bottom-right.png');
+      background-repeat: no-repeat;
+      background-size: 338px 463px, 287px 361px, 189px 408px, 147px 312px, 290px 551px, 326px 318px, 286px 385px;
+      background-position: left -7px, right 162px, left calc(50% - 10px), right calc(50% + 50px), left calc(100% + 81px), calc(50% + 70px) calc(100% - 58px), right calc(100% - 20px);
+
+      @include width-1650 {
+        background-size: 338px 463px, 287px 361px, 135px 291px, 115px 244px, 220px 418px, 0 0, 220px 296px;
+        background-position: left -7px, right 162px, left calc(50% - 10px), right calc(50% + 50px), left calc(100% + 81px), calc(50% + 70px) calc(100% - 58px), right calc(100% - 20px);
+      }
+
+      @include width-1100 {
+        background-size: 250px 342px, 200px 251px, 0 0, 0 0, 0 0, 0 0, 0 0;
+        background-position: left calc(0% + 50px), right 162px;
+      }
+
+      @include width-823 {
+        background-size: 190px 260px, 160px 201px, 0 0, 0 0, 0 0, 0 0, 0 0;
+        background-position: left calc(0% + 100px), right 162px;
+      }
+
+      @include width-568 {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 65px;
+    font-size: 210px;
+    color: $black;
+    text-align: center;
+
+    @include width-568 {
+      font-size: 135px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    width: 100%;
+
+    &:nth-of-type(1) {
+      margin-bottom: 85px;
+    }
+  }
+
+  &__sub {
+    position: relative;
+    margin-bottom: 45px;
+    @extend %montserrat-600;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include width-568 {
+      font-size: 25px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 19px 90px;
+    margin-bottom: 115px;
+
+    @include width-1650 {
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  }
+
+  &__item {
+    flex: 1 1 700px;
+    display: flex;
+    justify-content: space-between;
+
+    @include width-1650 {
+      align-items: flex-end;
+    }
+
+    @include width-568 {
+      flex-direction: column;
+    }
+  }
+
+  &__wrap {
+    max-width: 485px;
+    margin-right: 28px;
+
+    @include width-1650 {
+      max-width: 720px;
+    }
+
+    @include width-1500 {
+      margin-right: 20px;
+    }
+
+    @include width-823 {
+      margin-right: 10px;
+    }
+
+    p {
+      position: relative;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        bottom: 5px;
+        width: 100%;
+        height: 1px;
+        margin-left: 3px;
+        border-bottom: 1px solid $gray;
+      }
+    }
+  }
+
+  &__heading {
+    @extend %montserrat-600;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    font-size: 27px;
+    color: $black;
+    letter-spacing: 1.35px;
+    text-transform: uppercase;
+
+    @include width-1650 {
+      margin-bottom: 5px;
+    }
+
+    @include width-1500 {
+      font-size: 21px;
+    }
+
+    @include width-823 {
+      padding-top: 0;
+    }
+
+    @include width-568 {
+      font-size: 17px;
+    }
+
+    span {
+      text-transform: none;
+    }
+  }
+
+  &__price {
+    position: relative;
+    padding: 8px 0 0 35px;
+    margin-right: auto;
+    @extend %montserrat-700;
+    font-size: 85px;
+    color: $red;
+
+    @include width-1650 {
+      padding-left: 20px;
+      margin-right: 0;
+      font-size: 60px;
+    }
+
+    @include width-823 {
+      font-size: 35px;
+    }
+
+    sup {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      @extend %rupee;
+      font-size: 57px;
+
+      @include width-1650 {
+        font-size: 35px;
+      }
+
+      @include width-823 {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+//locations
+.locations {
+  min-height: 1040px;
+  padding-bottom: 51px;
+
+  &::before {
+    background-color: rgba($black, 0.3);
+
+    @include width-823 {
+      height: calc(100% - 20px);
+      margin-top: 20px;
+    }
+  }
+
+  &__box {
+    position: relative;
+    z-index: 30;
+    margin-top: -51px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: $white;
+    box-shadow: 0px 6px 11px 1px rgba($black, 0.1);
+
+    @include width-823 {
+      margin-top: -20px;
+    }
+  }
+
+  &__title {
+    display: inline-block;
+    margin-bottom: 68px;
+    font-size: 210px;
+    line-height: 0.7;
+    color: $black;
+
+    @include width-568 {
+      font-size: 135px;
+    }
+
+    &::after {
+      left: 73%;
+      bottom: -30px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    column-gap: 30px;
+    padding: 0 30px 30px;
+    margin-bottom: 64px;
+
+    @include width-823 {
+      flex-direction: column;
+      padding: 0 15px 15px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    max-width: 785px;
+    width: 100%;
+
+    @include width-823 {
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    font-size: 30px;
+    text-align: center;
+
+    @include width-823 {
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 13px;
+
+      @include width-1100 {
+        font-size: 22px;
+      }
+
+      @include width-568 {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__sub {
+    position: relative;
+    margin-bottom: 5px;
+  }
+
+  &__link,
+  &__ref {
+    position: relative;
+    padding-left: 40px;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    @include width-1100 {
+      font-size: 25px;
+      padding-left: 30px;
+    }
+
+    @include width-568 {
+      font-size: 20px;
+    }
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 30px;
+      height: 30px;
+      fill: $red;
+
+      @include width-1100 {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  // &__address {}
+
+  &__img {
+    width: 780px;
+    height: 416px;
+    margin-top: auto;
+    object-fit: cover;
+
+    @include width-1100 {
+      height: 280px;
+    }
+
+    @include width-415 {
+      height: 190px;
+    }
+  }
+
+  &__bottom {
+    position: relative;
+    text-align: center;
+
+    p {
+      display: inline-block;
+      max-width: 970px;
+      width: 100%;
+      margin-bottom: 75px;
+      font-size: 60px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: $white;
+      text-transform: uppercase;
+      text-align: center;
+
+      @include width-1100 {
+        font-size: 40px;
+      }
+
+      @include width-823 {
+        font-size: 28px;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+
+    @include width-568 {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__input {
+    max-width: 894px;
+    width: 100%;
+    height: 96px;
+    padding: 20px;
+    margin-right: 45px;
+    border-radius: 6px;
+    font-size: 30px;
+    background-color: rgba($white, 0.4);
+
+    @include width-1100 {
+      height: 75px;
+      padding: 15px;
+      margin-right: 20px;
+    }
+
+    @include width-823 {
+      height: 60px;
+      padding: 10px;
+    }
+
+    @include width-568 {
+      margin: 0 0 15px 0;
+    }
+  }
+
+  &__btn {
+    max-width: 315px;
+    width: 100%;
+
+    @include width-1100 {
+      max-width: 245px;
+    }
+
+    @include width-823 {
+      max-width: 160px;
+    }
+  }
+}
+
+//footer
+.footer {
+  text-transform: uppercase;
+
+  &__top {
+    padding: 130px 0;
+    background-color: $mineShaft2;
+  }
+
+  &__socials,
+  &__menu,
+  &__parts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 15px;
+  }
+
+  &__socials {
+    margin-bottom: 40px;
+  }
+
+  &__social {
+    padding: 0 21px;
+  }
+
+  &__link {
+    position: relative;
+    width: 66px;
+    height: 66px;
+    background-color: $white;
+    border-radius: 50%;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      fill: $red;
+    }
+  }
+
+  &__nav {}
+
+  &__menu {
+    margin-bottom: 30px;
+  }
+
+  &__elem {
+    padding: 0 37px;
+  }
+
+  &__ref {
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $white;
+  }
+
+  &__parts {}
+
+  &__part {
+    line-height: 1;
+    padding: 0 30px;
+
+    &:not(:last-child) {
+      border-right: 1px solid $white;
+    }
+  }
+
+  &__source {
+    font-size: 20px;
+    color: $white;
+  }
+
+  &__bottom {
+    padding: 40px 0;
+    font-size: 26px;
+    color: $white;
+    text-align: center;
+    background-color: $black;
+
+    p {
+      margin-bottom: 10px;
+
+      @include width-1100 {
+        font-size: 21px;
+      }
+    }
+  }
+
+  &__heart {
+    position: relative;
+    padding-left: 52px;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 7px;
+      width: 33px;
+      height: 33px;
+      fill: $white;
+    }
+  }
+
+  &__copy {
+    font-size: 20px;
+    letter-spacing: 1px;
+
+    @include width-1100 {
+      font-size: 18px;
+    }
+
+    span {
+      margin-right: 10px;
+      font-size: 27px;
+
+      @include width-1100 {
+        font-size: 21px;
+      }
+    }
+  }
+}
